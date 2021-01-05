@@ -2,6 +2,10 @@
 #include "ChiliWin.h"
 #include "ChiliException.h"
 #include <optional>
+#include "Keyboard.h"
+#include "Mouse.h"
+#include "Graphics.h"
+#include <memory>
 
 class Window
 {
@@ -56,12 +60,20 @@ public:
 	Window& operator=(const Window&) = delete;
 	void SetTitle(const std::string& title);
 	static std::optional<int> ProcessMessages();
+	Graphics& Gfx();
 private:
 	static LRESULT CALLBACK HandleMsgSetup(HWND hWnd,UINT msg,WPARAM wParam,LPARAM lParam) noexcept;
 	static LRESULT CALLBACK HandleMsgThunk(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
 	LRESULT HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) noexcept;
+public:
+	Keyboard kbd;
+	Mouse mouse; 
 private:
 	int width;
 	int height;
 	HWND hWnd;
+
+	//这是一个unique_ptr指针，当窗口销毁时也会自动销毁这个图形对象
+	std::unique_ptr<Graphics> pGfx;
+
 };
