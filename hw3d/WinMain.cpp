@@ -1,39 +1,9 @@
-//#include <windows.h>
-//#include <string>
-//#include <sstream>
-//using namespace std;
+/* 第一版
 
-
-#include "Window.h"
-
-int CALLBACK WinMain(HINSTANCE hInstance, 
-	HINSTANCE hPrevInstance,
-	LPSTR lpCmdLine, 
-	int nCmdShow)
-
-{
-
-	Window wnd(800, 300, "Donkey Fart Box");
-
-	//Window wnd2(300, 800, "Donkey Fart Box 2");
-
-	MSG msg;
-	BOOL gResult;
-	while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0)
-	{
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
-	}
-
-	if (gResult == -1)
-	{
-		return -1;
-	}
-	return msg.wParam;
-}
-
-/*
-
+#include <windows.h>
+#include <string>
+#include <sstream>
+using namespace std;
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg)
@@ -80,7 +50,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine, int nCmdShow)
 
-{	
+{
 	const auto pClassName = "hw3dbutts";
 	WNDCLASSEX wc = { 0 };
 	wc.cbSize = sizeof(wc);
@@ -102,9 +72,9 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		"Happy Hard Window",
 		WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU,
 		200,200,640,480,
-		nullptr,nullptr,hInstance,nullptr	
+		nullptr,nullptr,hInstance,nullptr
 	);
-	 
+
 	ShowWindow(hWnd, SW_SHOW);
 
 	MSG msg;
@@ -128,4 +98,58 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 }
 
 */
- 
+
+
+/* 第二版
+#include "Window.h"
+int CALLBACK WinMain(HINSTANCE hInstance, 
+	HINSTANCE hPrevInstance,
+	LPSTR lpCmdLine, 
+	int nCmdShow)
+
+{
+
+	Window wnd(800, 300, "Donkey Fart Box");
+
+	//Window wnd2(300, 800, "Donkey Fart Box 2");
+
+	MSG msg;
+	BOOL gResult;
+	while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0)
+	{
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
+	}
+
+	if (gResult == -1)
+	{
+		return -1;
+	}
+	return msg.wParam;
+}
+*/
+
+#include "App.h"
+int CALLBACK WinMain(HINSTANCE hInstance,
+	HINSTANCE hPrevInstance,
+	LPSTR lpCmdLine,
+	int nCmdShow)
+{
+	try 
+	{
+		return App{}.Go();
+	}
+	catch (const ChiliException& e)
+	{
+		MessageBox(nullptr, e.what(), e.GetType(), MB_OK | MB_ICONEXCLAMATION);
+	}
+	catch (const std::exception& e)
+	{
+		MessageBox(nullptr, e.what(), "Standard Exception", MB_OK | MB_ICONEXCLAMATION);
+	}
+	catch (...)
+	{
+		MessageBox(nullptr, "No details available", "Unknown Exception", MB_OK | MB_ICONEXCLAMATION);
+	}
+	return -1;
+}
