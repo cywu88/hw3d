@@ -137,6 +137,8 @@ int CALLBACK WinMain(HINSTANCE hInstance,
 {
 	try 
 	{
+		//MessageBox(nullptr, "what's the fuck why ", "Chili Exception", MB_OK | MB_ICONEXCLAMATION);
+
 		return App{}.Go();
 	}
 	catch (const ChiliException& e)

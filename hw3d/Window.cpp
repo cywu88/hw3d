@@ -4,6 +4,7 @@
 
 
 
+
 // Window Class Stuff
 Window::WindowClass Window::WindowClass::wndClass;
 
@@ -105,6 +106,10 @@ std::optional<int> Window::ProcessMessages()
 Graphics& Window::Gfx()
 {
 	// TODO: 在此处插入 return 语句
+	if (!pGfx)
+	{
+		throw CHWND_NOGFX_EXCEPT();
+	}
 	return *pGfx;
 }
 

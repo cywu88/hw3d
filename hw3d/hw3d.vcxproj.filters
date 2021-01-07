@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{4c44bca0-bf5e-4200-9e42-f6a5baede1b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Macros">
+      <UniqueIdentifier>{cc20047a-9e37-4b08-8c18-16f72f478459}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dxerr">
+      <UniqueIdentifier>{5373004e-a031-4eb8-8fc5-8f6c14f94539}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -40,6 +49,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Graphics.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dxerr.cpp">
+      <Filter>Dxerr</Filter>
+    </ClCompile>
+    <ClCompile Include="DxgiInfoManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,6 +89,24 @@
     <ClInclude Include="Graphics.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="GraphicsThrowMacros.h">
+      <Filter>头文件\Macros</Filter>
+    </ClInclude>
+    <ClInclude Include="dxerr.h">
+      <Filter>Dxerr</Filter>
+    </ClInclude>
+    <ClInclude Include="DxgiInfoManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowsThrowMacros.h">
+      <Filter>头文件\Macros</Filter>
+    </ClInclude>
+    <ClInclude Include="ConditionalNoexcept.h">
+      <Filter>头文件\Macros</Filter>
+    </ClInclude>
+    <ClInclude Include="ChiliWRL.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="hw3d.rc">
@@ -84,5 +117,24 @@
     <Image Include="chili.ico">
       <Filter>资源文件</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="VertexShader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="PixelShader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DXGetErrorDescription.inl">
+      <Filter>Dxerr</Filter>
+    </None>
+    <None Include="DXGetErrorString.inl">
+      <Filter>Dxerr</Filter>
+    </None>
+    <None Include="DXTrace.inl">
+      <Filter>Dxerr</Filter>
+    </None>
   </ItemGroup>
 </Project>

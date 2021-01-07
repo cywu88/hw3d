@@ -1,6 +1,7 @@
 #pragma once
 #include "ChiliWin.h"
 #include "ChiliException.h"
+#include "WindowsThrowMacros.h"
 #include <optional>
 #include "Keyboard.h"
 #include "Mouse.h"
