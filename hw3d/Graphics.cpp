@@ -181,6 +181,7 @@ void Graphics::DrawTestTriangle()
 		&pInputLayout
 	));
 
+	//bind vertex layout 至关重要的一行代码
 	pContext->IASetInputLayout(pInputLayout.Get());
 	  
 	
